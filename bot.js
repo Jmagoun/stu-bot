@@ -115,6 +115,7 @@ client.on("message", async message => { //reads every incoming message
   if (message.author.bot) return; //ignore if bot
 
   Regular();
+  BerateCal();
 
   if (message.content.indexOf(config.prefix) !== 0) return; //ignore if not command
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g); //split command and args
@@ -341,6 +342,16 @@ client.on("message", async message => { //reads every incoming message
       if (rngNumber == 69) { //if you hit a 69
         sender.addRole(roleR.id) //give them the regular role
         message.channel.send("nice") //say nice on the 69!
+      }
+    }
+  }
+
+  function BerateCal() {
+    let member = message.member;
+    if (member.id == config.CAL) {
+      const rngNumber = Math.ceil(Math.random() * 100); //get a number between 1 and 420
+      if (rngNumber == 69) {
+        message.channel.send("cal....really?");
       }
     }
   }
