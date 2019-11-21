@@ -87,14 +87,16 @@ function ServerUpdate() {
   }
 };
 
-
-
 function GoodMorning() {
   if (minute < 10) {
-    minute = "0" + minute
+    minute = `0${minute}`;
   }
-  client.channels.find("id", "639160062916689947").send("good morning! it is " + hour + ":" + minute + " on " + days[dayWeek] + ", " + months[nowMonth] + " " + dayMonth + ", " + nowYear);
-
+  client.channels.find(
+    "id",
+    "639160062916689947"
+  ).send(
+    `good morning! it is ${hour}:${minute} on ${days[dayWeek]}, ${months[nowMonth]} ${dayMonth}, ${nowYear}`
+  );
 }
 
 
@@ -255,7 +257,7 @@ client.on("message", async message => { //reads every incoming message
   }
 
   if (command === "stu") {
-    message.channel.send("happiness: " + happyBar + "\nhealth: " + healthBar + "\nthanks for checking on me!");
+    message.channel.send(`happiness: ${happyBar}\nhealth: ${healthBar}\nthanks for checking on me!`);
   }
 
   if (command === "stutime") {
@@ -276,7 +278,7 @@ client.on("message", async message => { //reads every incoming message
 
     }
 
-    message.channel.send("it is currently " + tempHour + ":" + minute + " " + designation + " at A.S.S headquarters");
+    message.channel.send(`it is currently ${tempHour}:${minute} ${designation} at A.S.S headquarters`);
 
   }
   if (command === "kiss") {
@@ -322,7 +324,7 @@ client.on("message", async message => { //reads every incoming message
     message.channel.send("excuse me, it's jon. thank you")
   }
   if (command === "serverpop") {
-    message.channel.send("there are " + message.guild.memberCount + " lovely people on the stuver")
+    message.channel.send(`there are ${message.guild.memberCount} lovely people on the stuver`)
   }
   if (command === "woohee") {
     message.channel.send("wee hoo")
