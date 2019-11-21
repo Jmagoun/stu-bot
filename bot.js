@@ -223,6 +223,24 @@ if(message.content.indexOf(config.prefix) !== 0) return; //ignore if not command
       message.channel.send("extra nice squad: " + userList); //send the string
   }
 
+  if (command === "megasuperregulars"){
+    let role = message.guild.roles.find("name", "Mega Super Regular")
+    var srList = role.members.array(); //array of all super Regulars
+    var userList = ""; 
+
+    for(i = 0; i < srList.length; i ++){
+      var cUser = srList[i].displayName //get user's display name
+      if (i == srList.length - 1){
+        userList += cUser.toLowerCase() //last name on list add to string
+      }
+      else{
+      userList += cUser.toLowerCase() + ", " //add name to string
+      }
+    }
+
+    message.channel.send("mega extra nice squad: " + userList); //send the string
+}
+
     if (command === "pet"){
       if (petNum < 10){
         petNum++;
