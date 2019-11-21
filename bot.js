@@ -9,19 +9,8 @@ var petNum = 0;
 var fedNum = 0;
 var fedHour;
 var petHour;
-var bar0 = "oooooooooo";
-var bar1 = "xooooooooo";
-var bar2 = "xxoooooooo";
-var bar3 = "xxxooooooo";
-var bar4 = "xxxxoooooo";
-var bar5 = "xxxxxooooo";
-var bar6 = "xxxxxxoooo";
-var bar7 = "xxxxxxxooo";
-var bar8 = "xxxxxxxxoo";
-var bar9 = "xxxxxxxxxo";
-var bar10 = "xxxxxxxxxx";
-var happyBar = bar0;
-var healthBar = bar0;
+var happyBar = '';
+var healthBar = '';
 var hour;
 var minute;
 var dayMonth;
@@ -32,18 +21,15 @@ var months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'a
 var days = ['sunday', 'monday','tuesday','wednesday','thursday', 'friday', 'saturday'];
 var heeHawtime = Math.floor(Math.random() * 24); 
 
-
-
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  updateHappy();
+  updateHealth();
   client.setInterval(ServerUpdate, 60000);
   ServerUpdate();
 });
 
 client.login(auth.token);
-
-
-
 
 function ServerUpdate(){
     var now = new Date(); // current date
@@ -406,77 +392,25 @@ if (sender.roles.has(roleR.id)) {
   }
 }});
 
+function generateBar(barNum, maxBarLength, fillChar='x', emptyChar='o') {
+  let bar = '';
+  for (let i = 0; i < barNum; ++i) {
+    bar += fillChar;
+  }
+  for (let i = barNum; i < maxBarLength; ++i) {
+    bar += emptyChar;
+  }
+  return bar;
+}
+
 function updateHappy() {
-  if (petNum == 0){
-    happyBar = bar0;
-  }
-  else if (petNum == 1){
-    happyBar = bar1;
-  }
-  else if (petNum == 2){
-    happyBar = bar2;
-  }
-  else if (petNum == 3){
-    happyBar = bar3;
-  }
-  else if (petNum == 4){
-    happyBar = bar4;
-  }
-  else if (petNum == 5){
-    happyBar = bar5;
-  }
-  else if (petNum == 6){
-    happyBar = bar6;
-  }
-  else if (petNum == 7){
-    happyBar = bar7;
-  }
-  else if (petNum == 8){
-    happyBar = bar8;
-  }
-  else if (petNum == 9){
-    happyBar = bar9;
-  }
-  else if (petNum == 10){
-    happyBar = bar10;
-  }
+  happyBar = generateBar(petNum, 10);
 }
 
 function updateHealth() {
-  if (fedNum == 0){
-    healthBar = bar0;
-  }
-  else if (fedNum == 1){
-    healthBar = bar1;
-  }
-  else if (fedNum == 2){
-    healthBar = bar2;
-  }
-  else if (fedNum == 3){
-    healthBar = bar3;
-  }
-  else if (fedNum == 4){
-    healthBar = bar4;
-  }
-  else if (fedNum == 5){
-    healthBar = bar5;
-  }
-  else if (fedNum == 6){
-    healthBar = bar6;
-  }
-  else if (fedNum == 7){
-    healthBar = bar7;
-  }
-  else if (fedNum == 8){
-    healthBar = bar8;
-  }
-  else if (fedNum == 9){
-    healthBar = bar9;
-  }
-  else if (fedNum == 10){
-    healthBar = bar10;
-  }
+  healthBar = generateBar(fedNum, 10);
 }
+
 function heeHaw (){
     client.channels.find("id", "639160062916689947").send("hee haw");
 }
