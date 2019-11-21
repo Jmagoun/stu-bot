@@ -274,7 +274,7 @@ client.on("message", async message => { //reads every incoming message
       message.channel.send("https://gyazo.com/b779ce218d6fe64ea5534372252e8cb7");
       break;
     case "commands":
-      message.channel.send("current commands: !links, !rules, !pet, !feed, !stu, !stutime, !kiss, !regulars, !superregulars, !serverpop");
+      message.channel.send("current commands: !links, !rules, !pet, !feed, !stu, !stutime, !kiss, !regulars, !superregulars, !megasuperregulars, !serverpop");
       break;
     case "frick":
       message.channel.send("no swer please");
