@@ -187,8 +187,8 @@ client.on("message", async message => { //reads every incoming message
       message.channel.send(`nice squad: ${userList}`); //send the string
       break;
     case "superregulars":
-      let role = message.guild.roles.find("name", "Super Regular");
-      var memberNameList = role.members.array().map(
+      let roleS = message.guild.roles.find("name", "Super Regular");
+      var memberNameList = roleS.members.array().map(
         member => member.displayName.toLowerCase()
       ); //array of all super Regular names
       var userList = memberNameList.join(', ');
@@ -196,8 +196,8 @@ client.on("message", async message => { //reads every incoming message
       message.channel.send(`extra nice squad: ${userList}`); //send the string
       break;
     case "megasuperregulars":
-      let role = message.guild.roles.find("name", "Mega Super Regular");
-      var memberNameList = role.members.array().map(
+      let roleM = message.guild.roles.find("name", "Mega Super Regular");
+      var memberNameList = roleM.members.array().map(
         member => member.displayName.toLowerCase()
       ); //array of all mega super Regular names
       var userList = memberNameList.join(', ');
