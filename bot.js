@@ -129,229 +129,185 @@ client.on("message", async message => { //reads every incoming message
   // }
   //to here
 
-  if (command === "links") { //a command for displaying links to all of Alex's stuff
-    message.channel.send("instagram: <https://instagram.com/stupidstupidshirts/>\ntwitch stream: <https://www.twitch.tv/stupidstupidshirts/>\ntwitter: <https://twitter.com/Stupid_shirts/>\nshirts: <https://stupidstupidshirts.com/>")
-    //say the links text
-  }
-
-  if (command === "rules") { //a command for displaying the rules
-    message.channel.send({
-      embed: {
-        color: 3447003,
-        author: {
-          name: "A.S.S sponsored message",
-          icon_url: client.user.avatarURL
-        },
-        title: "dont get caught horsin around :horse:",
-        fields: [{
-          name: "rule 1:",
-          value: "dont insult Stu"
-        },
-        {
-          name: "rule 2:",
-          value: "no NSFW images, im baby and so r u"
-        },
-        {
-          name: "rule 3:",
-          value: "don't ask for free stuff, i do giveaways"
-        },
-        {
-          name: "rule 4:",
-          value: "try not to spam pls"
-        },
-        {
-          name: "rule 5:",
-          value: "be nice"
-        },
-        {
-          name: "rule 6:",
-          value: "have fun"
+  switch (command) {
+    //a command for displaying links to all of Alex's stuff
+    case "links":
+      //say the links text
+      message.channel.send("instagram: <https://instagram.com/stupidstupidshirts/>\ntwitch stream: <https://www.twitch.tv/stupidstupidshirts/>\ntwitter: <https://twitter.com/Stupid_shirts/>\nshirts: <https://stupidstupidshirts.com/>");
+      break;
+    //a command for displaying the rules
+    case "rules":
+      message.channel.send({
+        embed: {
+          color: 3447003,
+          author: {
+            name: "A.S.S sponsored message",
+            icon_url: client.user.avatarURL
+          },
+          title: "dont get caught horsin around :horse:",
+          fields: [{
+            name: "rule 1:",
+            value: "dont insult Stu"
+          },
+          {
+            name: "rule 2:",
+            value: "no NSFW images, im baby and so r u"
+          },
+          {
+            name: "rule 3:",
+            value: "don't ask for free stuff, i do giveaways"
+          },
+          {
+            name: "rule 4:",
+            value: "try not to spam pls"
+          },
+          {
+            name: "rule 5:",
+            value: "be nice"
+          },
+          {
+            name: "rule 6:",
+            value: "have fun"
+          }
+          ],
+          footer: {
+            icon_url: client.user.avatarURL,
+            text: "© Alex's Stupid Shirts LLC in collaboration with the Alex's Stupid Software team"
+          }
         }
-        ],
-        footer: {
-          icon_url: client.user.avatarURL,
-          text: "© Alex's Stupid Shirts LLC in collaboration with the Alex's Stupid Software team"
-        }
-      }
-    });
-  }
+      });
+      break;
+    case "regulars":
+      let role = message.guild.roles.find("name", "Regulars");
+      var memberNameList = role.members.array().map(
+        member => member.displayName.toLowerCase()
+      ); //array of all Regular names
+      var userList = memberNameList.join(', ');
 
-  if (command === "regulars") {
-    let role = message.guild.roles.find("name", "Regulars")
-    var rList = role.members.array(); //array of all Regulars
-    var userList = "";
+      message.channel.send(`nice squad: ${userList}`); //send the string
+      break;
+    case "superregulars":
+      let role = message.guild.roles.find("name", "Super Regular");
+      var memberNameList = role.members.array().map(
+        member => member.displayName.toLowerCase()
+      ); //array of all super Regular names
+      var userList = memberNameList.join(', ');
 
-    for (i = 0; i < rList.length; i++) {
-      var cUser = rList[i].displayName //get user's display name
-      if (i == rList.length - 1) {
-        userList += cUser.toLowerCase() //last name on list add to string
-      }
-      else {
-        userList += cUser.toLowerCase() + ", " //add name to string
-      }
-    }
+      message.channel.send(`extra nice squad: ${userList}`); //send the string
+      break;
+    case "megasuperregulars":
+      let role = message.guild.roles.find("name", "Mega Super Regular");
+      var memberNameList = role.members.array().map(
+        member => member.displayName.toLowerCase()
+      ); //array of all mega super Regular names
+      var userList = memberNameList.join(', ');
 
-    message.channel.send(`nice squad: ${userList}`); //send the string
-  }
-
-  if (command === "superregulars") {
-    let role = message.guild.roles.find("name", "Super Regular")
-    var srList = role.members.array(); //array of all super Regulars
-    var userList = "";
-
-    for (i = 0; i < srList.length; i++) {
-      var cUser = srList[i].displayName //get user's display name
-      if (i == srList.length - 1) {
-        userList += cUser.toLowerCase() //last name on list add to string
-      }
-      else {
-        userList += cUser.toLowerCase() + ", " //add name to string
-      }
-    }
-
-    message.channel.send(`extra nice squad: ${userList}`); //send the string
-  }
-
-  if (command === "megasuperregulars") {
-    let role = message.guild.roles.find("name", "Mega Super Regular")
-    var srList = role.members.array(); //array of all super Regulars
-    var userList = "";
-
-    for (i = 0; i < srList.length; i++) {
-      var cUser = srList[i].displayName //get user's display name
-      if (i == srList.length - 1) {
-        userList += cUser.toLowerCase() //last name on list add to string
-      }
-      else {
-        userList += cUser.toLowerCase() + ", " //add name to string
-      }
-    }
-
-    message.channel.send(`mega extra nice squad: ${userList}`); //send the string
-  }
-
-  if (command === "pet") {
-    if (petNum < 10) {
-      petNum++;
-      updateHappy();
-      petHour = hour;
-      //message.channel.send("happiness: " + happyBar + "\nhealth: " + healthBar);
-      message.channel.send("uwu")
-    }
-    else {
-      message.channel.send("Stu is content, come back later.");
-    }
-  }
-
-  if (command === "feed") {
-    if (fedNum < 10) {
-      fedNum++;
-      updateHealth();
-      fedHour = hour;
-      //message.channel.send("happiness: " + happyBar + "\nhealth: " + healthBar);
-      message.channel.send("monch")
-    }
-    else {
-      message.channel.send("Stu is full, come back later.");
-    }
-  }
-
-  if (command === "stu") {
-    message.channel.send(`happiness: ${happyBar}\nhealth: ${healthBar}\nthanks for checking on me!`);
-  }
-
-  if (command === "stutime") {
-    var designation
-    var tempHour
-
-    if (minute < 10) {
-      minute = "0" + minute
-    }
-
-    if (hour < 12) {
-      tempHour = hour
-      designation = "am"
-    }
-    if (hour > 12) {
-      tempHour = hour - 12
-      designation = "pm"
-
-    }
-
-    message.channel.send(`it is currently ${tempHour}:${minute} ${designation} at A.S.S headquarters`);
-
-  }
-  if (command === "kiss") {
-    var rChance = Math.floor(Math.random() * 200)
-
-    if (rChance == 7) {
-      message.channel.send("i am flattered but i am currently taken by @THECalpal#5500");
-    }
-    else {
-      message.channel.send("mwah :heart:");
+      message.channel.send(`mega extra nice squad: ${userList}`); //send the string
+      break;
+    case "pet":
       if (petNum < 10) {
         petNum++;
         updateHappy();
+        petHour = hour;
+        //message.channel.send("happiness: " + happyBar + "\nhealth: " + healthBar);
+        message.channel.send("uwu");
       }
-    }
-  }
-  if (command === "pee") {
-    message.channel.send("banned");
-  }
-  if (command === "piss") {
-    message.channel.send("banned")
-  }
-  if (command === "shid") {
-    message.channel.send("https://gyazo.com/b779ce218d6fe64ea5534372252e8cb7")
-  }
+      else {
+        message.channel.send("Stu is content, come back later.");
+      }
+      break;
+    case "feed":
+      if (fedNum < 10) {
+        fedNum++;
+        updateHealth();
+        fedHour = hour;
+        //message.channel.send("happiness: " + happyBar + "\nhealth: " + healthBar);
+        message.channel.send("monch");
+      }
+      else {
+        message.channel.send("Stu is full, come back later.");
+      }
+      break;
+    case "stu":
+      message.channel.send(`happiness: ${happyBar}\nhealth: ${healthBar}\nthanks for checking on me!`);
+      break;
+    case "stutime":
+      var designation;
+      var tempHour;
 
-  if (command === "commands") {
-    message.channel.send("current commands: !links, !rules, !pet, !feed, !stu, !stutime, !kiss, !regulars, !superregulars, !serverpop");
-  }
+      if (minute < 10) {
+        minute = "0" + minute;
+      }
 
-  if (command === "frick") {
-    message.channel.send("no swer please");
-  }
-  if (command === "ded") {
-    message.channel.send("https://cdn.discordapp.com/attachments/639169397474459649/639615204673454090/image0.jpg")
-  }
-  if (command === "furry") {
-    message.delete().catch(O_o => { });
-    message.channel.send("There is no one single definition of what a furry is. Even within the furry fandom, people cannot always agree on just what makes a person a furry or not. Some would argue that to be a furry, you must think and talk like one (i.e. use furry specific words and phrases). Even if you go to conventions, wear a fursuit, draw the art, writes the stories etc but don't talk using furry lingo, you're not a furry. Basically, someone that may walk the walk but doesn’t talk the talk. Others would argue that even liking anthropomorphic creatures makes you a furry. You may have no idea the furry fandom exists or have ever heard of a furry convention, let alone any of the websites; simply liking 'anthro' critters makes you a furry. The way I see it, if or if you don’t consider yourself a furry is a matter of personal opinion. As with any hobby, most furries are normal people just like anyone you'll meet at work/school or going to/from work/school or anywhere. Then there is the small percent that are hard core fans and have taken what for most is a hobby and perverted it (sometimes in an all to literal sense). As is with so many other things in life, the few that take it too far tend to be the loudest. The silent majority are often forced into silence by the loud majority for fear that people will label them as being in the same class as the minority that have perverted it. One unfortunate side effect of the internet and the relative anonymity that some sites grant their users is people are able to engage in activities (even if only on a virtual level) that they would never even consider doing in real life. An example of this is trolls of message boards that say things to people they’d never say to them in person. I think a lot of the stereotypes associated with furries are because of this. In conclusion, as with any hobby, there are some furries that have taken it too far and/or perverted what for many is a fun harmless hobby.")
+      if (hour < 12) {
+        tempHour = hour;
+        designation = "am";
+      }
+      if (hour > 12) {
+        tempHour = hour - 12;
+        designation = "pm";
+      }
 
-  }
-  if (command === "john") {
-    message.channel.send("excuse me, it's jon. thank you")
-  }
-  if (command === "serverpop") {
-    message.channel.send(`there are ${message.guild.memberCount} lovely people on the stuver`)
-  }
-  if (command === "woohee") {
-    message.channel.send("wee hoo")
-  }
-  if (command === "reviews") {
-    message.channel.send("https://gyazo.com/04e9fb6504ea10c29be2937f017a431f")
-  }
-  if (command == "gay") {
-    message.channel.send("no u")
-  }
-  if (command == "alexis") {
-    message.channel.send("https://cdn.discordapp.com/attachments/639203849889906699/643546490043760690/image0.jpg")
-  }
-  if (command == "historyfact") {
-    message.channel.send("https://www.history.com/this-day-in-history");
+      message.channel.send(`it is currently ${tempHour}:${minute} ${designation} at A.S.S headquarters`);
+      break;
+    case "kiss":
+      var rChance = Math.floor(Math.random() * 200);
 
+      if (rChance == 7) {
+        message.channel.send("i am flattered but i am currently taken by @THECalpal#5500");
+      }
+      else {
+        message.channel.send("mwah :heart:");
+        if (petNum < 10) {
+          petNum++;
+          updateHappy();
+        }
+      }
+      break;
+    case "pee":
+      message.channel.send("banned");
+      break;
+    case "piss":
+      message.channel.send("banned");
+      break;
+    case "shid":
+      message.channel.send("https://gyazo.com/b779ce218d6fe64ea5534372252e8cb7");
+      break;
+    case "commands":
+      message.channel.send("current commands: !links, !rules, !pet, !feed, !stu, !stutime, !kiss, !regulars, !superregulars, !serverpop");
+      break;
+    case "frick":
+      message.channel.send("no swer please");
+      break;
+    case "ded":
+      message.channel.send("https://cdn.discordapp.com/attachments/639169397474459649/639615204673454090/image0.jpg");
+      break;
+    case "furry":
+      message.delete().catch(O_o => { });
+      message.channel.send("There is no one single definition of what a furry is. Even within the furry fandom, people cannot always agree on just what makes a person a furry or not. Some would argue that to be a furry, you must think and talk like one (i.e. use furry specific words and phrases). Even if you go to conventions, wear a fursuit, draw the art, writes the stories etc but don't talk using furry lingo, you're not a furry. Basically, someone that may walk the walk but doesn’t talk the talk. Others would argue that even liking anthropomorphic creatures makes you a furry. You may have no idea the furry fandom exists or have ever heard of a furry convention, let alone any of the websites; simply liking 'anthro' critters makes you a furry. The way I see it, if or if you don’t consider yourself a furry is a matter of personal opinion. As with any hobby, most furries are normal people just like anyone you'll meet at work/school or going to/from work/school or anywhere. Then there is the small percent that are hard core fans and have taken what for most is a hobby and perverted it (sometimes in an all to literal sense). As is with so many other things in life, the few that take it too far tend to be the loudest. The silent majority are often forced into silence by the loud majority for fear that people will label them as being in the same class as the minority that have perverted it. One unfortunate side effect of the internet and the relative anonymity that some sites grant their users is people are able to engage in activities (even if only on a virtual level) that they would never even consider doing in real life. An example of this is trolls of message boards that say things to people they’d never say to them in person. I think a lot of the stereotypes associated with furries are because of this. In conclusion, as with any hobby, there are some furries that have taken it too far and/or perverted what for many is a fun harmless hobby.");
+      break;
+    case "john":
+      message.channel.send("excuse me, it's jon. thank you");
+      break;
+    case "serverpop":
+      message.channel.send(`there are ${message.guild.memberCount} lovely people on the stuver`);
+      break;
+    case "woohee":
+      message.channel.send("wee hoo");
+      break;
+    case "reviews":
+      message.channel.send("https://gyazo.com/04e9fb6504ea10c29be2937f017a431f");
+      break;
+    case "gay":
+      message.channel.send("no u");
+      break;
+    case "alexis":
+      message.channel.send("https://cdn.discordapp.com/attachments/639203849889906699/643546490043760690/image0.jpg");
+      break;
+    case "historyfact":
+      message.channel.send("https://www.history.com/this-day-in-history");
+      break;
   }
-
-  //if (command == "stream"){
-
-
-  // message.channel.send("")
-
-  //}
-
-
-
 
   //Random Chance to be a Regular (KEEP AT THE BOTTOM)
   function Regular() {
@@ -360,30 +316,25 @@ client.on("message", async message => { //reads every incoming message
     let roleR3 = message.guild.roles.find("id", "641831568700211212");
     let sender = message.member;
     if (sender.roles.has(roleR.id)) {
-
       if (sender.roles.has(roleR2.id)) {
-
         if (sender.roles.has(roleR3.id)) {
           return;
         }
         else {
           const rngNumber = Math.ceil(Math.random() * 4200); //get a number between 1 and 4200
           if (rngNumber == 242) { //if you hit a 242
-            sender.addRole(roleR3.id) //give them the regular role
-            message.channel.send("dude, mega super nice") //say nice on the 242!
+            sender.addRole(roleR3.id); //give them the regular role
+            message.channel.send("dude, mega super nice"); //say nice on the 242!
           }
         }
       }
-
       else {
         const rngNumber = Math.ceil(Math.random() * 690); //get a number between 1 and 690
         if (rngNumber == 420) { //if you hit a 420
-          sender.addRole(roleR2.id) //give them the regular role
-          message.channel.send("dude, super nice") //say nice on the 420!
+          sender.addRole(roleR2.id); //give them the regular role
+          message.channel.send("dude, super nice"); //say nice on the 420!
         }
       }
-
-
     }
     else {
       const rngNumber = Math.ceil(Math.random() * 420); //get a number between 1 and 420
@@ -391,18 +342,17 @@ client.on("message", async message => { //reads every incoming message
         sender.addRole(roleR.id) //give them the regular role
         message.channel.send("nice") //say nice on the 69!
       }
-
     }
   }
 });
 
-function generateBar(barNum, maxBarLength, fillChar = 'x', emptyChar = 'o') {
+function generateBar(barNum, maxBarLength, fillCharacter = 'x', emptyCharacter = 'o') {
   let bar = '';
   for (let i = 0; i < barNum; ++i) {
-    bar += fillChar;
+    bar += fillCharacter;
   }
   for (let i = barNum; i < maxBarLength; ++i) {
-    bar += emptyChar;
+    bar += emptyCharacter;
   }
   return bar;
 }
