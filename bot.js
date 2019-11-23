@@ -209,7 +209,12 @@ client.on("message", async message => { //reads every incoming message
       if (petNum < 10) {
         petNum++;
         updateHappy();
+        if (hour >= 22){
+          petHour = 0; 
+        } 
+        else{
         petHour = hour;
+        }
         //message.channel.send("happiness: " + happyBar + "\nhealth: " + healthBar);
         message.channel.send("uwu");
       }
@@ -221,7 +226,13 @@ client.on("message", async message => { //reads every incoming message
       if (fedNum < 10) {
         fedNum++;
         updateHealth();
+        
+        if (hour >= 22){
+          fedHour = 0; 
+        } 
+        else{
         fedHour = hour;
+        }
         //message.channel.send("happiness: " + happyBar + "\nhealth: " + healthBar);
         message.channel.send("monch");
       }
