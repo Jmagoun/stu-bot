@@ -118,10 +118,17 @@ client.on("message", async message => { //reads every incoming message
 
   Regular();
   BerateCal();
-
-  if (message.content.indexOf(config.prefix) !== 0) return; //ignore if not command
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g); //split command and args
-  const command = args.shift().toLowerCase();                                   //shift to lower case for ease of use
+  
+  let command;
+  if (message.content.indexOf(config.prefix) !== -1) {
+    const mArray = message.content.trim(messsage.content.indexOf(config.prefix)).split(" ");
+    for(let i = 0; i < mArray.length; i++) {
+      if (mArray[i].indexOf(config.prefix) == 1 && mArray[1].length > 1) {
+        command = mArray[i].toLowerCase();
+        i = mArray.length;
+      }
+    }
+  } //ignore if not command
 
 
   //remove on public (remove up to //to here)
