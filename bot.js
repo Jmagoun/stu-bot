@@ -23,6 +23,8 @@ var heeHawtime = Math.floor(Math.random() * 24);
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  fedNum = 1
+  petNum = 1
   updateHappy();
   updateHealth();
   client.setInterval(ServerUpdate, 60000);
@@ -266,7 +268,7 @@ client.on("message", async message => { //reads every incoming message
       var rChance = Math.floor(Math.random() * 200);
 
       if (rChance == 7) {
-        message.channel.send("i am flattered but i am currently taken by @THECalpal#5500");
+        message.channel.send("i am flattered but i am currently taken by <@241814679033348098>");
       }
       else {
         message.channel.send("mwah :heart:");
@@ -318,6 +320,9 @@ client.on("message", async message => { //reads every incoming message
       break;
     case "historyfact":
       message.channel.send("https://www.history.com/this-day-in-history");
+      break;
+    case "testcommand": //use to test stuff
+      
       break;
   }
 
