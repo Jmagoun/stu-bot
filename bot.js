@@ -113,31 +113,24 @@ client.on('guildMemberAdd', member => {
 
 
 
-client.on("message", async message => { //reads every incoming message
+client.on('message', async message => { //reads every incoming message
   if (message.author.bot) return; //ignore if bot
-
+  let incMes = message.content
   Regular();
   BerateCal();
   
   let command;
-  if (message.content.indexOf(config.prefix) !== -1) {
-    const mArray = message.content.trim(messsage.content.indexOf(config.prefix)).split(" ");
-    for(let i = 0; i < mArray.length; i++) {
-      if (mArray[i].indexOf(config.prefix) == 1 && mArray[1].length > 1) {
+  if (incMes.indexOf(config.prefix) !== -1) {
+    const mArray = incMes.trim(incMes.indexOf(config.prefix)).split(" ");
+    for(let i = 0; i <= mArray.length; i++) {
+      if (mArray[i].indexOf(config.prefix) == 0){ //&& mArray[1].length > 1) {
         command = mArray[i].toLowerCase();
+        command = command.substr(1);
         i = mArray.length;
       }
     }
   } //ignore if not command
 
-
-  //remove on public (remove up to //to here)
-  //if(command === "say") { //make the bot say something
-  //  const sayMessage = args.join(" "); //join message together again for 1 arg.
-  // message.delete().catch(O_o=>{}); //delete command message if possible
-  // message.channel.send(sayMessage); //say the message
-  // }
-  //to here
 
   switch (command) {
     //a command for displaying links to all of Alex's stuff
