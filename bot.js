@@ -325,6 +325,9 @@ client.on('message', async message => { //reads every incoming message
     case "historyfact":
       message.channel.send("https://www.history.com/this-day-in-history");
       break;
+    case "croccers":
+      message.channel.send("<:croccers:643489110777921537>");
+    break;
     case "testcommand": //use to test stuff
       
       break;
