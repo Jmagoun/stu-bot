@@ -331,6 +331,9 @@ client.on('message', async message => { //reads every incoming message
     case "vibecheck":
       message.channel.send("Mr. <@537882200960532491>, your presence is requested in " + message.channel.name)
     break;
+    case "school":
+      message.channel.send("it's where sam is from")
+    break;
     case "testcommand": //use to test stuff
       
       break;
