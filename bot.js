@@ -334,9 +334,16 @@ client.on('message', async message => { //reads every incoming message
     case "school":
       message.channel.send("it's where sam is from")
     break;
+    case "drumk":
+        message.channel.send("https://cdn.discordapp.com/attachments/639160062916689947/651245882691551233/drumk.png");
+    break;
+    case "baby":
+        message.channel.send("<@108340775430946816>, step on me");
+    break;
+    
     case "testcommand": //use to test stuff
       
-      break;
+    break;
   }
 
   //Random Chance to be a Regular (KEEP AT THE BOTTOM)
