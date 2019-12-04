@@ -317,7 +317,7 @@ client.on('message', async message => { //reads every incoming message
       message.channel.send("https://gyazo.com/04e9fb6504ea10c29be2937f017a431f");
       break;
     case "gay":
-      message.channel.send("no u");
+      message.channel.send("https://media.discordapp.net/attachments/639160062916689947/651879175371620388/image0.png");
       break;
     case "alexis":
       message.channel.send("https://cdn.discordapp.com/attachments/639203849889906699/643546490043760690/image0.jpg");
