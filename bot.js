@@ -341,7 +341,7 @@ client.on('message', async message => { //reads every incoming message
         message.channel.send("<@108340775430946816>, step on me");
     break;
     case "supersecretcommandslistthatyoushouldn'taccessyoufool":
-        message.channel.send("!links, !rules, !pet, !feed, !stu, !stutime, !kiss, !regulars, !superregulars, !megasuperregulars, !serverpop, !drumk, !baby, !school, !vibecheck, !croccers, !historyfact, !alexis, !gay, !reviews, !woohee, !serverpop, !john, !furry, !ded, !frick, !commands, !shid, !piss, !pee, ")
+        message.channel.send("!links, !rules, !pet, !feed, !stu, !stutime, !kiss, !regulars, !superregulars, !megasuperregulars, !serverpop, !drumk, !baby, !school, !vibecheck, !croccers, !historyfact, !alexis, !gay, !reviews, !woohee, !serverpop, !john, !furry, !ded, !frick, !commands, !shid, !piss, !pee");
     break;
 
     case "testcommand": //use to test stuff
