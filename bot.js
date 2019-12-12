@@ -257,7 +257,7 @@ client.on('message', async message => { //reads every incoming message
         tempHour = hour;
         designation = "am";
       }
-      if (hour = 12){
+      if (hour == 12){
         designation = "pm";
         tempHour = hour;
       }
