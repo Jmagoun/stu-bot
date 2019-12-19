@@ -388,7 +388,7 @@ client.on('message', async message => { //reads every incoming message
   function BerateCal() {
     let member = message.member;
     if (member.id == config.CAL) {
-      const rngNumber = Math.ceil(Math.random() * 100); //get a number between 1 and 420
+      const rngNumber = Math.ceil(Math.random() * 1000); //get a number between 1 and 420
       if (rngNumber == 69) {
         message.channel.send("cal....really?");
       }
