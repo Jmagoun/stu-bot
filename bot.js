@@ -172,6 +172,10 @@ client.on('message', async message => { //reads every incoming message
             name: "rule 6:",
             value: "have fun"
           }
+          {
+            name: "rule 7:",
+            value: "no hate speech of any kind"
+          }
           ],
           footer: {
             icon_url: client.user.avatarURL,
