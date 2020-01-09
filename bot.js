@@ -367,7 +367,7 @@ client.on('message', async message => { //reads every incoming message
           return;
         }
         else {
-          const rngNumber = Math.ceil(Math.random() * 42069); //get a number between 1 and 42069
+          let rngNumber = Math.ceil(Math.random() * 42069); //get a number between 1 and 42069
           if (sender.id == 288508066830221322)
           {
             rngNumber = 4206
