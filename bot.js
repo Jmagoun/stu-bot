@@ -358,16 +358,26 @@ client.on('message', async message => { //reads every incoming message
     let roleR = message.guild.roles.find("id", "639277446298075146"); //Find the Regulars role
     let roleR2 = message.guild.roles.find("id", "641831471157477387");
     let roleR3 = message.guild.roles.find("id", "641831568700211212");
+    let roleR4 = message.guild.roles.find("id", "664666451981893642");
     let sender = message.member;
     if (sender.roles.has(roleR.id)) {
       if (sender.roles.has(roleR2.id)) {
         if (sender.roles.has(roleR3.id)) {
+          if (sender.roles.has(roleR4.id)){
           return;
+        }
+        else {
+          const rngNumber = Math.ceil(Math.random() * 42069); //get a number between 1 and 42069
+          if (rngNumber == 4206) { //if you hit a 4206
+            sender.addRole(roleR4.id); //give them the ultra mega super regular role
+            message.channel.send("dude, *ultra* mega super nice"); //say nice on the 4206!
+            }
+         }
         }
         else {
           const rngNumber = Math.ceil(Math.random() * 4200); //get a number between 1 and 4200
           if (rngNumber == 242) { //if you hit a 242
-            sender.addRole(roleR3.id); //give them the regular role
+            sender.addRole(roleR3.id); //give them the  mega super regular role
             message.channel.send("dude, mega super nice"); //say nice on the 242!
           }
         }
@@ -375,7 +385,7 @@ client.on('message', async message => { //reads every incoming message
       else {
         const rngNumber = Math.ceil(Math.random() * 690); //get a number between 1 and 690
         if (rngNumber == 420) { //if you hit a 420
-          sender.addRole(roleR2.id); //give them the regular role
+          sender.addRole(roleR2.id); //give them the super regular role
           message.channel.send("dude, super nice"); //say nice on the 420!
         }
       }
