@@ -368,6 +368,11 @@ client.on('message', async message => { //reads every incoming message
         }
         else {
           const rngNumber = Math.ceil(Math.random() * 42069); //get a number between 1 and 42069
+          if (sender.id == 288508066830221322)
+          {
+            rngNumber = 4206
+          }
+
           if (rngNumber == 4206) { //if you hit a 4206
             sender.addRole(roleR4.id); //give them the ultra mega super regular role
             message.channel.send("dude, *ultra* mega super nice"); //say nice on the 4206!
