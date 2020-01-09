@@ -208,8 +208,15 @@ client.on('message', async message => { //reads every incoming message
         member => member.displayName.toLowerCase()
       ); //array of all mega super Regular names
       var userList = memberNameList.join(', ');
+      
+      case "ultramegasuperregulars":
+      let roleM = message.guild.roles.find("name", "Ultra Mega Super Regular");
+      var memberNameList = roleM.members.array().map(
+        member => member.displayName.toLowerCase()
+      ); //array of all mega super Regular names
+      var userList = memberNameList.join(', ');
 
-      message.channel.send(`mega extra nice squad: ${userList}`); //send the string
+      message.channel.send(`ultra mega extra nice squad: ${userList}`); //send the string
       break;
     case "pet":
       if (petNum < 10) {
@@ -296,7 +303,7 @@ client.on('message', async message => { //reads every incoming message
       message.channel.send("https://gyazo.com/b779ce218d6fe64ea5534372252e8cb7");
       break;
     case "commands":
-      message.channel.send("current commands: !links, !rules, !pet, !feed, !stu, !stutime, !kiss, !regulars, !superregulars, !megasuperregulars, !serverpop");
+      message.channel.send("current commands: !links, !rules, !pet, !feed, !stu, !stutime, !kiss, !regulars, !superregulars, !megasuperregulars, !ultramegasuperregulars, !serverpop");
       break;
     case "frick":
       message.channel.send("no swer please");
@@ -344,8 +351,11 @@ client.on('message', async message => { //reads every incoming message
     case "baby":
         message.channel.send("<@108340775430946816>, step on me");
     break;
+    case "bi":
+        message.channel.send("https://open.spotify.com/track/45h4w81P5iJJTSeR0jJUQ8?si=1n-1i81zS_Wf13XlNh79OQ")
+    break;
     case "supersecretcommandslistthatyoushouldn'taccessyoufool":
-        message.channel.send("!links, !rules, !pet, !feed, !stu, !stutime, !kiss, !regulars, !superregulars, !megasuperregulars, !serverpop, !drumk, !baby, !school, !vibecheck, !croccers, !historyfact, !alexis, !gay, !reviews, !woohee, !serverpop, !john, !furry, !ded, !frick, !commands, !shid, !piss, !pee");
+        message.channel.send("!links, !rules, !pet, !feed, !stu, !stutime, !kiss, !regulars, !superregulars, !megasuperregulars, !ultramegasuperregulars !serverpop, !drumk, !baby, !school, !vibecheck, !croccers, !historyfact, !alexis, !gay, !reviews, !woohee, !serverpop, !john, !furry, !ded, !frick, !commands, !shid, !piss, !pee");
     break;
 
     case "testcommand": //use to test stuff
