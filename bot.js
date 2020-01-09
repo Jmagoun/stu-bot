@@ -209,11 +209,12 @@ client.on('message', async message => { //reads every incoming message
       ); //array of all mega super Regular names
       var userList = memberNameList.join(', ');
     break;  
+    
     case "ultramegasuperregulars":
-      let roleM = message.guild.roles.find("name", "Ultra Mega Super Regular");
-      var memberNameList = roleM.members.array().map(
+      let roleU = message.guild.roles.find("name", "Ultra Mega Super Regular");
+      var memberNameList = roleU.members.array().map(
         member => member.displayName.toLowerCase()
-      ); //array of all mega super Regular names
+      ); //array of all ultra mega super Regular names
       var userList = memberNameList.join(', ');
 
       message.channel.send(`ultra mega extra nice squad: ${userList}`); //send the string
