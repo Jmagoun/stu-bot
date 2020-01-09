@@ -208,8 +208,8 @@ client.on('message', async message => { //reads every incoming message
         member => member.displayName.toLowerCase()
       ); //array of all mega super Regular names
       var userList = memberNameList.join(', ');
-      
-      case "ultramegasuperregulars":
+    break;  
+    case "ultramegasuperregulars":
       let roleM = message.guild.roles.find("name", "Ultra Mega Super Regular");
       var memberNameList = roleM.members.array().map(
         member => member.displayName.toLowerCase()
