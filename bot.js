@@ -208,6 +208,7 @@ client.on('message', async message => { //reads every incoming message
         member => member.displayName.toLowerCase()
       ); //array of all mega super Regular names
       var userList = memberNameList.join(', ');
+      message.channel.send(`mega extra nice squad: ${userList}`); //send the string
     break;  
     
     case "ultramegasuperregulars":
