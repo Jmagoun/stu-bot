@@ -359,7 +359,9 @@ client.on('message', async message => { //reads every incoming message
     case "supersecretcommandslistthatyoushouldn'taccessyoufool":
         message.channel.send("!links, !rules, !pet, !feed, !stu, !stutime, !kiss, !regulars, !superregulars, !megasuperregulars, !ultramegasuperregulars !serverpop, !drumk, !baby, !school, !vibecheck, !croccers, !historyfact, !alexis, !gay, !reviews, !woohee, !serverpop, !john, !furry, !ded, !frick, !commands, !shid, !piss, !pee");
     break;
-
+    case "gmarly":
+      message.channel.send("https://gyazo.com/addd10116a027fc70b26ae742c1b4847");
+      break;
     case "testcommand": //use to test stuff
       
     break;
