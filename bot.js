@@ -116,7 +116,7 @@ client.on('guildMemberAdd', member => {
 client.on('message', async message => { //reads every incoming message
   if (message.author.bot) return; //ignore if bot
   let incMes = message.content
-  Regular(message);
+  //Regular(message);
   BerateCal();
   
   let command;
