@@ -368,11 +368,11 @@ client.on('message', async message => { //reads every incoming message
   }
 
   //Random Chance to be a Regular (KEEP AT THE BOTTOM) (NOTE: This is really specific to the A.S.S. Discord, feel free to remove, just dump the reference to the function up above too.)
-  function Regular(message) {
-    let roleR = message.guild.roles.find("id", "639277446298075146"); //Find the Regulars role
-    let roleR2 = message.guild.roles.find("id", "641831471157477387");
-    let roleR3 = message.guild.roles.find("id", "641831568700211212");
-    let roleR4 = message.guild.roles.find("id", "664666451981893642");
+  function Regular() {
+    let roleR = message.guild.roles.fetch("id", "639277446298075146"); //Find the Regulars role
+    let roleR2 = message.guild.roles.fetch("id", "641831471157477387");
+    let roleR3 = message.guild.roles.fetch("id", "641831568700211212");
+    let roleR4 = message.guild.roles.fetch("id", "664666451981893642");
     let sender = message.member;
     if (sender.roles.has(roleR.id)) {
       if (sender.roles.has(roleR2.id)) {
