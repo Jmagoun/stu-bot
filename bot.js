@@ -185,7 +185,7 @@ client.on('message', async message => { //reads every incoming message
       });
       break;
     case "regulars":
-      let role = message.guild.roles.cache.find('639277446298075146');
+      let role = message.guild.roles.cache.fetch('639277446298075146');
       var memberNameList = role.members.array().map(
         member => member.displayName.toLowerCase()
       ); //array of all Regular names
@@ -194,7 +194,7 @@ client.on('message', async message => { //reads every incoming message
       message.channel.send(`nice squad: ${userList}`); //send the string
       break;
     case "superregulars":
-      let roleS = message.guild.roles.cache.find('641831471157477387');
+      let roleS = message.guild.roles.cache.fetch('641831471157477387');
       var memberNameList = roleS.members.array().map(
         member => member.displayName.toLowerCase()
       ); //array of all super Regular names
@@ -203,7 +203,7 @@ client.on('message', async message => { //reads every incoming message
       message.channel.send(`extra nice squad: ${userList}`); //send the string
       break;
     case "megasuperregulars":
-      let roleM = message.guild.roles.cache.find('641831568700211212');
+      let roleM = message.guild.roles.cache.fetch('641831568700211212');
       var memberNameList = roleM.members.array().map(
         member => member.displayName.toLowerCase()
       ); //array of all mega super Regular names
@@ -212,7 +212,7 @@ client.on('message', async message => { //reads every incoming message
     break;  
     
     case "ultramegasuperregulars":
-      let roleU = message.guild.roles.cache.find('664666451981893642');
+      let roleU = message.guild.roles.cache.fetch('664666451981893642');
       var memberNameList = roleU.members.array().map(
         member => member.displayName.toLowerCase()
       ); //array of all ultra mega super Regular names
