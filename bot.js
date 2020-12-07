@@ -20,6 +20,7 @@ var nowYear;
 var months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
 var days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
 var heeHawtime = Math.floor(Math.random() * 24);
+var alarmtime = 0
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -40,13 +41,11 @@ function ServerUpdate() {
   dayMonth = now.getDate();
   dayWeek = now.getDay();
   nowMonth = now.getMonth();
-  nowYear = now.getFullYear();
-  //if(hour == 0){
-  //  fedHour = 0;
-  //  petHour = 0;
-  //}
+  nowYear = now.getFullYear(); //set time for time command
+  alarmtime ++; //increase alarmtime so that at 5 minutes, stu will complain
 
-  if (hour >= fedHour + 2) {
+//feed & pet system
+  if (hour >= fedHour + 3) { //every three hours, reduce level of food by 1
     if (fedNum == 0) {
 
     }
@@ -57,7 +56,7 @@ function ServerUpdate() {
     }
   }
 
-  if (hour >= petHour + 1) {
+  if (hour >= petHour + 2) {
     if (petNum == 0) {
 
     }
@@ -67,35 +66,36 @@ function ServerUpdate() {
       petHour = hour;
     }
   }
-
+if (alarmtime == 5) { 
   if (petNum == 0) {
-    client.channels.find("id", "639160062916689947").send("give luv");
+    client.channels.find("id", config.mainCH).send("give luv");
   }
 
   if (fedNum == 0) {
-    client.channels.find("id", "639160062916689947").send("give food");
+    client.channels.find("id", config.mainCH).send("give food");
   }
-
-  if (hour == 9 && minute == 0) {
+  alarmtime = 0
+}
+  if (hour == 9 && minute == 0) { //9am run good morning
     GoodMorning();
   }
 
-  if (hour == 0 && minute == 0) {
+  if (hour == 0 && minute == 0) { // reset timer for random heehaw
     heeHawtime = Math.floor(Math.random() * 24)
   }
 
-  if (hour == heeHawtime && minute == 0) {
+  if (hour == heeHawtime && minute == 0) { //heehaw on time
     heeHaw();
   }
 };
 
-function GoodMorning() {
+function GoodMorning() { //say good morning, and the current time
   if (minute < 10) {
     minute = `0${minute}`;
   }
   client.channels.find(
     "id",
-    "639160062916689947"
+    config.mainCH
   ).send(
     `good morning! it is ${hour}:${minute} on ${days[dayWeek]}, ${months[nowMonth]} ${dayMonth}, ${nowYear}`
   );
@@ -367,7 +367,7 @@ client.on('message', async message => { //reads every incoming message
     break;
   }
 
-  //Random Chance to be a Regular (KEEP AT THE BOTTOM)
+  //Random Chance to be a Regular (KEEP AT THE BOTTOM) (NOTE: This is really specific to the A.S.S. Discord, feel free to remove, just dump the reference to the function up above too.)
   function Regular() {
     let roleR = message.guild.roles.find("id", "639277446298075146"); //Find the Regulars role
     let roleR2 = message.guild.roles.find("id", "641831471157477387");
@@ -446,15 +446,5 @@ function updateHealth() {
 }
 
 function heeHaw() {
-  client.channels.find("id", "639160062916689947").send("hee haw");
+  client.channels.find("id", config.mainCH).send("hee haw");
 }
-
-/*
-function getNextSunday() {
-  var now = new Date();
-  var nextSunday = new Date();
-  nextSunday.setDate(now.getDate() + (6 - 1 - now.getDay() + 7) % 7 + 1);
-  nextSunday.setHours(20, 0, 0, 0);
-  return nextSunday;
-}
-*/
