@@ -116,7 +116,7 @@ client.on('guildMemberAdd', member => {
 client.on('message', async message => { //reads every incoming message
   if (message.author.bot) return; //ignore if bot
   let incMes = message.content
-  Regular();
+  Regular(message);
   BerateCal();
   
   let command;
@@ -368,7 +368,7 @@ client.on('message', async message => { //reads every incoming message
   }
 
   //Random Chance to be a Regular (KEEP AT THE BOTTOM) (NOTE: This is really specific to the A.S.S. Discord, feel free to remove, just dump the reference to the function up above too.)
-  function Regular() {
+  function Regular(message) {
     let roleR = message.guild.roles.find("id", "639277446298075146"); //Find the Regulars role
     let roleR2 = message.guild.roles.find("id", "641831471157477387");
     let roleR3 = message.guild.roles.find("id", "641831568700211212");
